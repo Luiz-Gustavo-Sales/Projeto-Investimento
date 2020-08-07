@@ -9,7 +9,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import ContactsMultiSelectMenu from './ContactsMultiSelectMenu';
 import ContactsTable from './ContactsTable';
 import { openEditContactDialog, removeContact, toggleStarredContact, selectContacts } from './store/contactsSlice';
-
+// ARQUIVO HEADER DAS TABELAS DOS USUÁRIOS LISTADOS
 function ContactsList(props) {
 	const dispatch = useDispatch();
 	const contacts = useSelector(selectContacts);
@@ -37,25 +37,15 @@ function ContactsList(props) {
 				sortable: false
 			},
 			{
-				Header: 'First Name',
+				Header: 'Full Name',
 				accessor: 'name',
 				className: 'font-bold',
 				sortable: true
 			},
+
 			{
-				Header: 'Last Name',
-				accessor: 'lastName',
-				className: 'font-bold',
-				sortable: true
-			},
-			{
-				Header: 'Company',
-				accessor: 'company',
-				sortable: true
-			},
-			{
-				Header: 'Job Title',
-				accessor: 'jobTitle',
+				Header: 'Cpf',
+				accessor: 'cpf',
 				sortable: true
 			},
 			{
@@ -63,11 +53,34 @@ function ContactsList(props) {
 				accessor: 'email',
 				sortable: true
 			},
+
 			{
 				Header: 'Phone',
 				accessor: 'phone',
 				sortable: true
 			},
+			{
+				//Header da tabelas onde fica o nome
+				Header: 'Bank',
+				//seta os nome dos valores 
+				accessor: 'bank',
+				sortable: true
+			},
+			{
+				//Header da tabelas onde fica o nome
+				Header: 'Agency',
+				//seta os nome dos valores 
+				accessor: 'agency',
+				sortable: true
+			},
+			{
+				//Header da tabelas onde fica o nome
+				Header: 'Account',
+				//seta os nome dos valores 
+				accessor: 'account',
+				sortable: true
+			},
+
 			{
 				id: 'action',
 				width: 128,

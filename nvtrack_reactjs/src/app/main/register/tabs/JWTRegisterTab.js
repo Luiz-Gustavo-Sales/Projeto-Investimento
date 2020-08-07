@@ -42,7 +42,7 @@ function JWTRegisterTab(props) {
 		dispatch(submitRegister(e));
 	
 	}
-
+//SELECT FOI ATRIBUIDO O MESMO VALOR value="none"
 	return (
 		<div className="w-full">
 			<Formsy
@@ -124,7 +124,7 @@ function JWTRegisterTab(props) {
 
 				<TextFieldFormsy
 					className="mb-16"
-					type="phone"
+					type="Numeric"
 					name="telephone"
 					label="Telephone"
 					validations={{
@@ -154,8 +154,11 @@ function JWTRegisterTab(props) {
 					variant="outlined"
 					required
 				>
+					
 					<MenuItem>
+					
 						<em>None</em>
+					
 					</MenuItem>
 					<MenuItem variant="outlined" required value="none">
 						B. Brasil

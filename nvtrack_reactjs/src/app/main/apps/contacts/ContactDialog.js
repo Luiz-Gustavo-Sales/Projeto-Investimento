@@ -129,10 +129,10 @@ function ContactDialog(props) {
 
 						<TextField
 							className="mb-24"
-							label="Name"
+							label="Full name"
 							autoFocus
-							id="name"
-							name="name"
+							id="fullname"
+							name="fullname"
 							value={form.name}
 							onChange={handleChange}
 							variant="outlined"
@@ -142,45 +142,15 @@ function ContactDialog(props) {
 					</div>
 
 					<div className="flex">
-						<div className="min-w-48 pt-20" />
-						<TextField
-							className="mb-24"
-							label="Last name"
-							id="lastName"
-							name="lastName"
-							value={form.lastName}
-							onChange={handleChange}
-							variant="outlined"
-							fullWidth
-						/>
-					</div>
-
-					<div className="flex">
 						<div className="min-w-48 pt-20">
-							<Icon color="action">star</Icon>
+							<Icon color="action"> person_pin</Icon>
 						</div>
 						<TextField
 							className="mb-24"
-							label="Nickname"
-							id="nickname"
-							name="nickname"
-							value={form.nickname}
-							onChange={handleChange}
-							variant="outlined"
-							fullWidth
-						/>
-					</div>
-
-					<div className="flex">
-						<div className="min-w-48 pt-20">
-							<Icon color="action">phone</Icon>
-						</div>
-						<TextField
-							className="mb-24"
-							label="Phone"
-							id="phone"
-							name="phone"
-							value={form.phone}
+							label="Cpf"
+							id="cpf"
+							name="cpf"
+							value={form.cpf}
 							onChange={handleChange}
 							variant="outlined"
 							fullWidth
@@ -205,14 +175,14 @@ function ContactDialog(props) {
 
 					<div className="flex">
 						<div className="min-w-48 pt-20">
-							<Icon color="action">domain</Icon>
+							<Icon color="action">phone</Icon>
 						</div>
 						<TextField
 							className="mb-24"
-							label="Company"
-							id="company"
-							name="company"
-							value={form.company}
+							label="Phone"
+							id="phone"
+							name="phone"
+							value={form.phone}
 							onChange={handleChange}
 							variant="outlined"
 							fullWidth
@@ -221,30 +191,13 @@ function ContactDialog(props) {
 
 					<div className="flex">
 						<div className="min-w-48 pt-20">
-							<Icon color="action">work</Icon>
+							<Icon color="action">Bank</Icon>
 						</div>
 						<TextField
 							className="mb-24"
-							label="Job title"
-							id="jobTitle"
-							name="jobTitle"
-							value={form.jobTitle}
-							onChange={handleChange}
-							variant="outlined"
-							fullWidth
-						/>
-					</div>
-
-					<div className="flex">
-						<div className="min-w-48 pt-20">
-							<Icon color="action">cake</Icon>
-						</div>
-						<TextField
-							className="mb-24"
-							id="birthday"
-							label="Birthday"
-							type="date"
-							value={form.birthday}
+							id="bank"
+							label="Bank"
+							type="text"
 							onChange={handleChange}
 							InputLabelProps={{
 								shrink: true
@@ -256,14 +209,13 @@ function ContactDialog(props) {
 
 					<div className="flex">
 						<div className="min-w-48 pt-20">
-							<Icon color="action">home</Icon>
+							<Icon color="action">RiBankLine</Icon>
 						</div>
 						<TextField
 							className="mb-24"
-							label="Address"
-							id="address"
-							name="address"
-							value={form.address}
+							label="Agency"
+							id="agency"
+							name="agency"
 							onChange={handleChange}
 							variant="outlined"
 							fullWidth
@@ -272,18 +224,16 @@ function ContactDialog(props) {
 
 					<div className="flex">
 						<div className="min-w-48 pt-20">
-							<Icon color="action">note</Icon>
+							<Icon color="action">RiBankLine</Icon>
 						</div>
 						<TextField
 							className="mb-24"
-							label="Notes"
-							id="notes"
-							name="notes"
-							value={form.notes}
+							label="Account"
+							id="account"
+							name="account"
+							value={form.address}
 							onChange={handleChange}
 							variant="outlined"
-							multiline
-							rows={5}
 							fullWidth
 						/>
 					</div>
