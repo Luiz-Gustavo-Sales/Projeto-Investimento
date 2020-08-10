@@ -10,7 +10,7 @@ import clsx from 'clsx';
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import JWTRegisterTab from './tabs/JWTRegisterTab';
-
+import api from '../../../DB/index'
 const useStyles = makeStyles(theme => ({
 	root: {
 		background: `linear-gradient(to left, ${theme.palette.primary.dark} 0%, ${darken(

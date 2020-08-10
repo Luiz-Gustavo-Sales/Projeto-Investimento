@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk, createEntityAdapter } from '@reduxjs/toolkit';
 import axios from 'axios';
+import api from '../../../../../DB/index'
 import { getUserData } from './userSlice';
 
 export const getContacts = createAsyncThunk('contactsApp/contacts/getContacts', async (routeParams, { getState }) => {
@@ -23,7 +24,7 @@ export const addContact = createAsyncThunk(
 		return data;
 	}
 );
-
+//editar contatos
 export const updateContact = createAsyncThunk(
 	'contactsApp/contacts/updateContact',
 	async (contact, { dispatch, getState }) => {
@@ -35,18 +36,18 @@ export const updateContact = createAsyncThunk(
 		return data;
 	}
 );
-
+//remover contato
 export const removeContact = createAsyncThunk(
 	'contactsApp/contacts/removeContact',
 	async (contactId, { dispatch, getState }) => {
-		const response = await axios.post('/api/contacts-app/remove-contact', { contactId });
+		const response = await api.post('/pic/api/cliente/deleteCliente', { contactId });
 		const data = await response.data;
 		dispatch(getContacts());
 
 		return data;
 	}
 );
-
+//remover contatos
 export const removeContacts = createAsyncThunk(
 	'contactsApp/contacts/removeContacts',
 	async (contactIds, { dispatch, getState }) => {

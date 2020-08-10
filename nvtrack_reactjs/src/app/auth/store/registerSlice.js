@@ -3,12 +3,16 @@ import { showMessage } from 'app/store/fuse/messageSlice';
 import jwtService from 'app/services/jwtService';
 import { setUserData } from './userSlice';
 
-export const submitRegister = ({ displayName, password, email }) => async dispatch => {
+export const submitRegister = ({ nome, email, telefone, banco, agencia, conta, cpf }) => async dispatch => {
 	return jwtService
 		.createUser({
-			displayName,
-			password,
-			email
+			nome,
+			email,
+			telefone,
+			banco,
+			agencia,
+			conta,
+			cpf
 		})
 		.then(user => {
 			dispatch(setUserData(user));
@@ -19,12 +23,16 @@ export const submitRegister = ({ displayName, password, email }) => async dispat
 		});
 };
 
-
 const initialState = {
 	success: false,
 	error: {
-		username: null,
-		password: null
+		fullname: null,
+		cpf: null,
+		email: null,
+		telephone: null,
+		none: null,
+		agencia: null,
+		account: null
 	}
 };
 

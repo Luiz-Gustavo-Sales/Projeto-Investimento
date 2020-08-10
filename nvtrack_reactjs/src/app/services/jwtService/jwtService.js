@@ -1,5 +1,6 @@
 import FuseUtils from '@fuse/utils/FuseUtils';
 import axios from 'axios';
+import api from '../../../DB/index'
 import jwtDecode from 'jwt-decode';
 /* eslint-disable camelcase */
 
@@ -45,18 +46,19 @@ class JwtService extends FuseUtils.EventEmitter {
 		}
 	};
 
-	// createUser = data => {
-	// 	return new Promise((resolve, reject) => {
-	// 		axios.post('/api/auth/register', data).then(response => {
-	// 			if (response.data.user) {
-	// 				this.setSession(response.data.access_token);
-	// 				resolve(response.data.user);
-	// 			} else {
-	// 				reject(response.data.error);
-	// 			}
-	// 		});
-	// 	});
-	// };
+	//========criando usuários====================
+ createUser = data => {
+	return new Promise((resolve, reject) => {
+	api.post('/pic/api/cliente/saveCliente', data).then(response => {
+			if (response.data.user) {
+				this.setSession(response.data.access_token);
+				resolve(response.data.user);
+			} else {
+				reject(response.data.error);
+		}
+	});
+	});
+ };
 
 	signInWithEmailAndPassword = (username, password) => {
 		return new Promise((resolve, reject) => {

@@ -22,18 +22,15 @@ import {
 } from './store/contactsSlice';
 
 const defaultFormState = {
-	id: '',
-	name: '',
-	lastName: '',
-	avatar: 'assets/images/avatars/profile.jpg',
-	nickname: '',
-	company: '',
-	jobTitle: '',
+	name:'',
+	nome: '',
 	email: '',
-	phone: '',
-	address: '',
-	birthday: '',
-	notes: ''
+	telefone: '',
+	banco: '',
+	agencia: '',
+	conta: '',
+	cpf: '',
+	avatar: 'assets/images/avatars/profile.jpg'
 };
 
 function ContactDialog(props) {
@@ -76,20 +73,22 @@ function ContactDialog(props) {
 	}
 
 	function canBeSubmitted() {
-		return form.name.length > 0;
+		return form.nome.length > 0;
 	}
-
+	//salvar usuários (Criar)
 	function handleSubmit(event) {
 		event.preventDefault();
 
 		if (contactDialog.type === 'new') {
+			//adicionar contatos
 			dispatch(addContact(form));
 		} else {
+			//editar usuários
 			dispatch(updateContact(form));
 		}
 		closeComposeDialog();
 	}
-
+	//remover contatos
 	function handleRemove() {
 		dispatch(removeContact(form.id));
 		closeComposeDialog();
@@ -115,6 +114,7 @@ function ContactDialog(props) {
 					<Avatar className="w-96 h-96" alt="contact avatar" src={form.avatar} />
 					{contactDialog.type === 'edit' && (
 						<Typography variant="h6" color="inherit" className="pt-8">
+							
 							{form.name}
 						</Typography>
 					)}
@@ -133,7 +133,7 @@ function ContactDialog(props) {
 							autoFocus
 							id="fullname"
 							name="fullname"
-							value={form.name}
+							value={form.nome}
 							onChange={handleChange}
 							variant="outlined"
 							required
@@ -181,8 +181,8 @@ function ContactDialog(props) {
 							className="mb-24"
 							label="Phone"
 							id="phone"
-							name="phone"
-							value={form.phone}
+							name="telefone"
+							value={form.telefone}
 							onChange={handleChange}
 							variant="outlined"
 							fullWidth
@@ -196,8 +196,10 @@ function ContactDialog(props) {
 						<TextField
 							className="mb-24"
 							id="bank"
+							name="banco"
 							label="Bank"
 							type="text"
+							value={form.banco}
 							onChange={handleChange}
 							InputLabelProps={{
 								shrink: true
@@ -213,9 +215,10 @@ function ContactDialog(props) {
 						</div>
 						<TextField
 							className="mb-24"
+							name="agencia"
 							label="Agency"
 							id="agency"
-							name="agency"
+							value={form.agencia}
 							onChange={handleChange}
 							variant="outlined"
 							fullWidth
@@ -230,8 +233,8 @@ function ContactDialog(props) {
 							className="mb-24"
 							label="Account"
 							id="account"
-							name="account"
-							value={form.address}
+							name="conta"
+							value={form.conta}
 							onChange={handleChange}
 							variant="outlined"
 							fullWidth
@@ -247,7 +250,7 @@ function ContactDialog(props) {
 								color="primary"
 								onClick={handleSubmit}
 								type="submit"
-								disabled={!canBeSubmitted()}
+							//	disabled={!canBeSubmitted()}
 							>
 								Add
 							</Button>
@@ -261,10 +264,8 @@ function ContactDialog(props) {
 								color="primary"
 								type="submit"
 								onClick={handleSubmit}
-								disabled={!canBeSubmitted()}
-							>
-								Save
-							</Button>
+							//	disabled={!canBeSubmitted()}
+								>Save</Button>
 						</div>
 						<IconButton onClick={handleRemove}>
 							<Icon>delete</Icon>

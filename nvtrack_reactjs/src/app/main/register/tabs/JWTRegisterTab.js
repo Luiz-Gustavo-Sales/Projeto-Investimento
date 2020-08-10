@@ -15,6 +15,7 @@ import { submitRegister } from 'app/auth/store/registerSlice';
 import MenuItem from '@material-ui/core/MenuItem';
 
 function JWTRegisterTab(props) {
+
 	const dispatch = useDispatch();
 	const register = useSelector(({ auth }) => auth.register);
 
@@ -37,12 +38,13 @@ function JWTRegisterTab(props) {
 	function enableButton() {
 		setIsFormValid(true);
 	}
-
-	function handleSubmit(e, model) {
-		dispatch(submitRegister(e));
-	
+//chamando função para cadastrar usuários
+	async function  handleSubmit(model) {
+		dispatch(submitRegister(model));
 	}
+
 //SELECT FOI ATRIBUIDO O MESMO VALOR value="none"
+//====================AJEITAR SELECT================================
 	return (
 		<div className="w-full">
 			<Formsy
@@ -55,7 +57,7 @@ function JWTRegisterTab(props) {
 				<TextFieldFormsy
 					className="mb-16"
 					type="text"
-					name="fullname"
+					name="nome"
 					label="Full name"
 					validations={{
 						//	minLength: 30,
@@ -125,7 +127,7 @@ function JWTRegisterTab(props) {
 				<TextFieldFormsy
 					className="mb-16"
 					type="Numeric"
-					name="telephone"
+					name="telefone"
 					label="Telephone"
 					validations={{
 						maxLength: 11
@@ -145,31 +147,30 @@ function JWTRegisterTab(props) {
 					variant="outlined"
 					required
 				/>
+				
 				<SelectFormsy
 					className="my-16"
-					name="bank"
+					name="banco"
 					label="Select Bank"
-					validations="equals:none"
+					validations="equals:"
 					validationErrors="Must be None"
 					variant="outlined"
 					required
-				>
-					
+				>	
+				
 					<MenuItem>
-					
 						<em>None</em>
-					
 					</MenuItem>
-					<MenuItem variant="outlined" required value="none">
+					<MenuItem variant="outlined" required >
 						B. Brasil
 					</MenuItem>
-					<MenuItem variant="outlined" required value="none">
+					<MenuItem variant="outlined" required >
 						Bradesco
 					</MenuItem>
-					<MenuItem variant="outlined" required value="none">
+					<MenuItem variant="outlined" required >
 						Caixa Economica
 					</MenuItem>
-					<MenuItem variant="outlined" required value="none">
+					<MenuItem variant="outlined" required>
 						Santander
 					</MenuItem>
 				</SelectFormsy>
@@ -200,7 +201,7 @@ function JWTRegisterTab(props) {
 				<TextFieldFormsy
 					className="mb-16"
 					type="text"
-					name="account"
+					name="conta"
 					label="Account"
 					validations={{
 						maxLength: 15

@@ -37,8 +37,8 @@ function ContactsList(props) {
 				sortable: false
 			},
 			{
-				Header: 'Full Name',
-				accessor: 'name',
+				Header: 'Nome',
+				accessor: 'nome',
 				className: 'font-bold',
 				sortable: true
 			},
@@ -55,29 +55,29 @@ function ContactsList(props) {
 			},
 
 			{
-				Header: 'Phone',
-				accessor: 'phone',
+				Header: 'Telefone',
+				accessor: 'telefone',
 				sortable: true
 			},
 			{
 				//Header da tabelas onde fica o nome
-				Header: 'Bank',
+				Header: 'Banco',
 				//seta os nome dos valores 
-				accessor: 'bank',
+				accessor: 'banco',
 				sortable: true
 			},
 			{
 				//Header da tabelas onde fica o nome
-				Header: 'Agency',
+				Header: 'Agencia',
 				//seta os nome dos valores 
-				accessor: 'agency',
+				accessor: 'agencia',
 				sortable: true
 			},
 			{
 				//Header da tabelas onde fica o nome
-				Header: 'Account',
+				Header: 'Conta',
 				//seta os nome dos valores 
-				accessor: 'account',
+				accessor: 'conta',
 				sortable: true
 			},
 
