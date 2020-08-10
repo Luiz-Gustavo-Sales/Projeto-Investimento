@@ -22,7 +22,6 @@ import {
 } from './store/contactsSlice';
 
 const defaultFormState = {
-	name:'',
 	nome: '',
 	email: '',
 	telefone: '',
@@ -30,7 +29,6 @@ const defaultFormState = {
 	agencia: '',
 	conta: '',
 	cpf: '',
-	avatar: 'assets/images/avatars/profile.jpg'
 };
 
 function ContactDialog(props) {
@@ -115,7 +113,7 @@ function ContactDialog(props) {
 					{contactDialog.type === 'edit' && (
 						<Typography variant="h6" color="inherit" className="pt-8">
 							
-							{form.name}
+							{form.nome}
 						</Typography>
 					)}
 				</div>
@@ -132,7 +130,7 @@ function ContactDialog(props) {
 							label="Full name"
 							autoFocus
 							id="fullname"
-							name="fullname"
+							name="nome"
 							value={form.nome}
 							onChange={handleChange}
 							variant="outlined"

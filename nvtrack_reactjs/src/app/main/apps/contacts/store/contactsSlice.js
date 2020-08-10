@@ -4,12 +4,14 @@ import api from '../../../../../DB/index'
 import { getUserData } from './userSlice';
 
 export const getContacts = createAsyncThunk('contactsApp/contacts/getContacts', async (routeParams, { getState }) => {
+
 	routeParams = routeParams || getState().contactsApp.contacts.routeParams;
-	const response = await axios.get('/api/contacts-app/contacts', {
+	const response = await  api.post('/pic/api/cliente/getAllClientes', {
 		params: routeParams
 	});
-	const data = await response.data;
+	
 
+	const data = await response.data.data.clientes;
 	return { data, routeParams };
 });
 
