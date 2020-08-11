@@ -1,16 +1,14 @@
 import { createSlice, createAsyncThunk, createEntityAdapter } from '@reduxjs/toolkit';
 import axios from 'axios';
-import api from '../../../../../DB/index'
+import api from '../../../../../DB/index';
 import { getUserData } from './userSlice';
 
-export const getContacts = createAsyncThunk('contactsApp/contacts/getContacts', async (routeParams, { getState }) => {
-
+export const getContacts = createAsyncThunk('/pic/api/cliente/getAllClientes', async (routeParams, { getState }) => {
 	routeParams = routeParams || getState().contactsApp.contacts.routeParams;
-	const response = await  api.post('/pic/api/cliente/getAllClientes', {
+	const response = await api.post('/pic/api/cliente/getAllClientes', {
 		params: routeParams
 	});
-	
-
+	//forma de mostrar os usuários está diferente
 	const data = await response.data.data.clientes;
 	return { data, routeParams };
 });
@@ -18,20 +16,28 @@ export const getContacts = createAsyncThunk('contactsApp/contacts/getContacts', 
 export const addContact = createAsyncThunk(
 	'contactsApp/contacts/addContact',
 	async (contact, { dispatch, getState }) => {
-		const response = await axios.post('/api/contacts-app/add-contact', { contact });
-		const data = await response.data;
+		const response = await api.post('/pic/api/cliente/saveCliente', { contact });
+		const data = await response.data.data.clientes;
 
 		dispatch(getContacts());
 
 		return data;
 	}
 );
-//editar contatos
+//editar contato
 export const updateContact = createAsyncThunk(
-	'contactsApp/contacts/updateContact',
-	async (contact, { dispatch, getState }) => {
-		const response = await axios.post('/api/contacts-app/update-contact', { contact });
-		const data = await response.data;
+	'/pic/api/cliente/updateCliente',
+	async (id,nome, banco, agencia, conta, cpf, telefone, email, { dispatch, getState }) => {
+		console.log(id)
+		console.log(nome)
+		console.log(agencia)
+		console.log(cpf)
+		console.log(telefone)
+		console.log(email)
+		console.log(conta)
+		console.log(banco)
+		const response = await api.post('/pic/api/cliente/updateCliente',{params:{id, nome, banco, agencia, conta, cpf, telefone, email}});
+		const data = await response.data.data.clientes;
 
 		dispatch(getContacts());
 
@@ -39,21 +45,22 @@ export const updateContact = createAsyncThunk(
 	}
 );
 //remover contato
-export const removeContact = createAsyncThunk(
-	'contactsApp/contacts/removeContact',
-	async (contactId, { dispatch, getState }) => {
-		const response = await api.post('/pic/api/cliente/deleteCliente', { contactId });
-		const data = await response.data;
-		dispatch(getContacts());
+//colocar ID para poder pegar o usuári selecionado,assim passando para rota que reconhece como ID
+export const removeContact = createAsyncThunk('/pic/api/cliente/deleteCliente', async (id, { dispatch, getState }) => {
+	console.log('MEU IDDDD ' + id);
+	const response = await api.delete('/pic/api/cliente/deleteCliente', { params: { id } });
+	const data = await response.data.data.clientes;
 
-		return data;
-	}
-);
+	dispatch(getContacts());
+
+	return data;
+});
 //remover contatos
 export const removeContacts = createAsyncThunk(
 	'contactsApp/contacts/removeContacts',
-	async (contactIds, { dispatch, getState }) => {
-		const response = await axios.post('/api/contacts-app/remove-contacts', { contactIds });
+	async (id, { dispatch, getState }) => {
+		//params passando para rota
+		const response = await api.delete('/pic/api/cliente/deleteCliente', { params: { id } });
 		const data = await response.data;
 
 		dispatch(getContacts());

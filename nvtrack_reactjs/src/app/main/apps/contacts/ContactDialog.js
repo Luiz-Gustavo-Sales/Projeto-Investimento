@@ -71,7 +71,7 @@ function ContactDialog(props) {
 	}
 
 	function canBeSubmitted() {
-		return form.nome.length > 0;
+		return form.nome.length < 0;
 	}
 	//salvar usuários (Criar)
 	function handleSubmit(event) {
@@ -248,7 +248,7 @@ function ContactDialog(props) {
 								color="primary"
 								onClick={handleSubmit}
 								type="submit"
-							//	disabled={!canBeSubmitted()}
+						//		disabled={!canBeSubmitted()}
 							>
 								Add
 							</Button>
@@ -262,7 +262,7 @@ function ContactDialog(props) {
 								color="primary"
 								type="submit"
 								onClick={handleSubmit}
-							//	disabled={!canBeSubmitted()}
+								//	disabled={!canBeSubmitted()}
 								>Save</Button>
 						</div>
 						<IconButton onClick={handleRemove}>
