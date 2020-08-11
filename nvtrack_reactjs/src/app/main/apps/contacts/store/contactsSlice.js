@@ -9,6 +9,8 @@ export const getContacts = createAsyncThunk('/pic/api/cliente/getAllClientes', a
 		params: routeParams
 	});
 	//forma de mostrar os usuários está diferente
+
+	
 	const data = await response.data.data.clientes;
 	return { data, routeParams };
 });
@@ -27,12 +29,10 @@ export const addContact = createAsyncThunk(
 //editar contato
 export const updateContact = createAsyncThunk(
 	'/pic/api/cliente/updateCliente',
-	async (id, nome, banco, agencia, conta, cpf, telefone, email, { dispatch, getState }) => {
-		const response = await api.post(`/pic/api/cliente/updateCliente`, { body: { id, nome, banco, agencia, conta, cpf, telefone, email} });
-		const data = await response.data.data.clientes;
-
-		dispatch(getContacts());
-
+	async (contact, { dispatch, getState }) => {
+		const response = await api.post('/pic/api/cliente/updateCliente', contact);
+		const data = await response.data.data.cliente;
+		getContacts();
 		return data;
 	}
 );

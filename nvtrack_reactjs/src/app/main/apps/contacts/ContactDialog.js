@@ -81,7 +81,8 @@ function ContactDialog(props) {
 			//adicionar contatos
 			dispatch(addContact(form));
 		} else {
-			//editar usuários
+			//editar usuários aquic
+			//console.log(form)
 			dispatch(updateContact(form));
 		}
 		closeComposeDialog();
