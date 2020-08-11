@@ -27,16 +27,8 @@ export const addContact = createAsyncThunk(
 //editar contato
 export const updateContact = createAsyncThunk(
 	'/pic/api/cliente/updateCliente',
-	async (id,nome, banco, agencia, conta, cpf, telefone, email, { dispatch, getState }) => {
-		console.log(id)
-		console.log(nome)
-		console.log(agencia)
-		console.log(cpf)
-		console.log(telefone)
-		console.log(email)
-		console.log(conta)
-		console.log(banco)
-		const response = await api.post('/pic/api/cliente/updateCliente',{params:{id, nome, banco, agencia, conta, cpf, telefone, email}});
+	async (id, nome, banco, agencia, conta, cpf, telefone, email, { dispatch, getState }) => {
+		const response = await api.post(`/pic/api/cliente/updateCliente`, { body: { id, nome, banco, agencia, conta, cpf, telefone, email} });
 		const data = await response.data.data.clientes;
 
 		dispatch(getContacts());
