@@ -2,19 +2,18 @@ import { createSlice, createAsyncThunk, createEntityAdapter } from '@reduxjs/too
 import axios from 'axios';
 import api from '../../../../../DB/index';
 import { getUserData } from './userSlice';
-
+// listando todos os usuários
 export const getContacts = createAsyncThunk('/pic/api/cliente/getAllClientes', async (routeParams, { getState }) => {
 	routeParams = routeParams || getState().contactsApp.contacts.routeParams;
 	const response = await api.post('/pic/api/cliente/getAllClientes', {
 		params: routeParams
 	});
-	//forma de mostrar os usuários está diferente
-
-	
+	//estrutura para chegar nos dados
 	const data = await response.data.data.clientes;
 	return { data, routeParams };
 });
 
+//funcionalidade não concluida
 export const addContact = createAsyncThunk(
 	'contactsApp/contacts/addContact',
 	async (contact, { dispatch, getState }) => {
@@ -26,7 +25,7 @@ export const addContact = createAsyncThunk(
 		return data;
 	}
 );
-//editar contato
+//editar contato: conncluido
 export const updateContact = createAsyncThunk(
 	'/pic/api/cliente/updateCliente',
 	async (contact, { dispatch, getState }) => {
@@ -37,9 +36,10 @@ export const updateContact = createAsyncThunk(
 	}
 );
 //remover contato
-//colocar ID para poder pegar o usuári selecionado,assim passando para rota que reconhece como ID
+//colocar ID para poder pegar o usuário selecionado,assim passando para rota que reconhece como id não como contact
 export const removeContact = createAsyncThunk('/pic/api/cliente/deleteCliente', async (id, { dispatch, getState }) => {
 	console.log('MEU IDDDD ' + id);
+	//passando id com params
 	const response = await api.delete('/pic/api/cliente/deleteCliente', { params: { id } });
 	const data = await response.data.data.clientes;
 
@@ -47,11 +47,11 @@ export const removeContact = createAsyncThunk('/pic/api/cliente/deleteCliente', 
 
 	return data;
 });
-//remover contatos
+//remover contatos, funcionalidade concluida
 export const removeContacts = createAsyncThunk(
 	'contactsApp/contacts/removeContacts',
 	async (id, { dispatch, getState }) => {
-		//params passando para rota
+		//params passando id para rota
 		const response = await api.delete('/pic/api/cliente/deleteCliente', { params: { id } });
 		const data = await response.data;
 
